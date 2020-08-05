@@ -1,0 +1,46 @@
+    <project>
+      <modelVersion>4.0.0</modelVersion>
+     
+      <groupId>com.mycompany.app</groupId>
+      <artifactId>my-app</artifactId>
+      <version>1</version>
+
+  <build>
+          <pluginManagement>
+      <plugins>
+      <plugin>
+        <groupId>com.github.sylvainlaurent.maven</groupId>
+        <artifactId>yaml-json-validator-maven-plugin</artifactId>
+        <version>...</version>
+        <executions>
+          <execution>
+            <id>validate</id>
+            <phase>validate</phase>
+            <goals>
+              <goal>validate</goal>
+            </goals>
+            <configuration>
+              <validationSets>
+                <validationSet>
+                  <!-- no jsonSchema is specified, check only that file are well formed -->
+                  <includes>
+                    <include>resources/*.yml</include>
+                  </includes>
+                </validationSet>
+              </validationSets>
+              <!-- Duplicate keys detection is turned on by default. -->
+              <detectDuplicateKeys>false</detectDuplicateKeys>
+              <allowEmptyFiles>false</allowEmptyFiles>
+              <!-- Allow comments in json files is turned off by default -->
+              <allowJsonComments>true</allowJsonComments>
+              <!-- Trailing commas are not allwed by default -->
+              <allowTrailingComma>true</allowTrailingComma>
+              <skip>false</skip>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+      </plugins>
+  </pluginManagement>
+  </build>
+    </project>
